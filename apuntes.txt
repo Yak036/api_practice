@@ -1,0 +1,6 @@
+
+// Con este comando creas un modelo, controlador, migraciones, factory
+php artisan make:model Post -cmf
+
+// Con esto creamos un controlador para la Api que este vinculado con el modelo Post 
+php artisan make:controller Api/V1/PostController --api --model=Post
