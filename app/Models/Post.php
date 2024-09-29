@@ -14,7 +14,6 @@ class Post extends Model
     public function getExcerptAttribute()
     {
         return substr($this->content, 0 , 120);
-
     }
     public function getPublishedAtAttribute()
     {

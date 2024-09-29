@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
+// ? Con esto llamas al recurso que vayas a utilizar para editar lo q se vera de la API
+use App\Http\Resources\V1\PostResource;
+
 class PostController extends Controller
 {
     /**
@@ -37,7 +40,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return $post;
+        return new PostResource($post);
     }
 
     /**
