@@ -10,5 +10,44 @@ php artisan migrate
 php artisan make:controller Api/V1/PostController --api --model=Post
 
 // Con esto creamos un resource
-// -> Estos sirven para darle estilo a la API mostrar los datos que quieras mostrar de una db o simplemente calcular algo con ellos.
+// -> Estos sirven para darle Formato a la API mostrar los datos que quieras mostrar de una db o simplemente calcular algo con ellos (Actuan de forma global).
 sudo php artisan make:resource V1/PostResource
+
+//Coleccion: Un conjunto de datos con la disponibilidad de paginar
+// ? Esto es para traer una COLECCION DE LOS ULTIMOS DATOS SUBIDOS A LA DB (API)
+      return PostResource::collection(Post::latest()->paginate());
+
+
+
+//Con este comando ves las rutas de la api
+-> php artisan route:list
+
+
+
+// Realizar version 2 de la api
+->  Tener en cuenta
+    Que tenemos?
+    Que se necesita?
+    Configuracion
+    Recursos
+    Coleccion
+
+    Crear la version 2 con el comando
+    -> php artisan make:controller Ap/v2/PostController --api --model=Post
+    
+    Tambien debes crear el resource de la version 2
+    -> php artisan make:resource V2/PostResource
+
+    Y tambien una Coleccion
+    ->php artisan make:resource V2/PostResource
+
+      En Laravel, una colección es una clase genérica que representa un conjunto de objetos. Estas colecciones proporcionan una interfaz conveniente para trabajar con grupos de datos, facilitando operaciones comunes como iteración, filtrado, mapeo y transformación de elementos (actuan de forma individual).
+      En palabras cortas segun lo que vi en el curso son datos estaticos que agrega uno como programador para darle una especie de firma a la api dejando los meta-datos
+
+
+// API PRIVADA
+Necesitas descargar una libreria de composer con el comando
+
+composer require laravel/sanctum
+
+cuando haces esto no permites q cualquiera use la api, tambien debes hacer unos cambios en routes/api  y al momento de usar la api agregar en el header un accept = aplication/json
